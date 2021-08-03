@@ -3,22 +3,28 @@
 
 <head>
     <title>Login Page</title>
-    <link rel="stylesheet" href="styles/login.css">
+    <link rel="stylesheet" href="https://fluentdesignforweb.github.io/fluent.css">
+    <link rel="stylesheet" href="./styles/custom.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow&display=swap" rel="stylesheet">
+    <style>
+        body{        
+            background-image: url(./styles/background.png);
+            background-size: cover;
+        }
+    </style>
 </head>
 
+<script src="JS/login.js"></script>
 <body>
     <div class="login">
-        <div class="form">
-            <form class="box" action="./form_validation.html">
-                <h1>LOGIN HERE!</h1>
-                <input type="text" placeholder="username" id="username">
-                <input type="password" placeholder="password" id="password">
-                <input type="submit" value="Login" onclick="validate()">
-            </form>
+        <div class="box">
+            <h3>Login</h3><br/>
+            <input type="text" placeholder="Username" id="username"><br/>
+            <input type="password" placeholder="Password" id="password"><br/><br/>
+            <button class="primary_blue" onclick="validate()">Login</button>
         </div>
     </div>
-    <script src="JS/login.js"></script>
 </body>
 
 </html>

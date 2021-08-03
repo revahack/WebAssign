@@ -1,0 +1,28 @@
+.box {
+  width: 480px;
+  height: 320px;
+  background-color: #fafafa88;
+  -webkit-backdrop-filter: blur(10px) saturate(125%);
+          backdrop-filter: blur(10px) saturate(125%);
+  position: fixed;
+  bottom: 100px;
+  right: 200px;
+  padding: 20px 40px;
+  border-radius: 6px;
+}
+
+.box input {
+  margin: 6px 0;
+  border-radius: 4px;
+}
+
+.validForm {
+  width: 60%;
+  margin: 6vh auto;
+  background-color: #fafafa88;
+  -webkit-box-shadow: 4px 4px 10px #acacacaa, -4px -4px 10px #acacacaa;
+          box-shadow: 4px 4px 10px #acacacaa, -4px -4px 10px #acacacaa;
+  border-radius: 12px;
+  padding: 20px 40px;
+}
+/*# sourceMappingURL=custom.css.map */

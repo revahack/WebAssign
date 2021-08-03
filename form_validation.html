@@ -6,24 +6,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personal Details</title>
+    <link rel="stylesheet" href="https://fluentdesignforweb.github.io/fluent.css">
+    <link rel="stylesheet" href="./styles/custom.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <div>
-        <form id="user-form" action="./marksheet.html">
-            <label for="fname">First name:</label><br>
-            <input type="text" id="fname" name="fname">
-            <span id="fname-error"></span><br>
+        <form id="user-form" class="validForm">
+            <h3>Student Details</h3><br/>
+            <input type="text" id="fname" name="fname"><br/>
+            <label for="fname">First name</label><br/>
+            <span id="fname-error"></span><br/><br/>
 
-            <label for="lname">Last name:</label><br>
-            <input type="text" id="lname" name="lname">
-            <span id="lname-error"></span><br>
+            <input type="text" id="lname" name="lname"><br/>
+            <label for="lname">Last name:</label><br/>
+            <span id="lname-error"></span><br/><br/>
 
+            <input type="email" id="email" name="email" placeholder="abc@xyz.com"><br/>
             <label for="email">Email id:</label><br>
-            <input type="email" id="email" name="email" placeholder="abc@xyz.com">
             <span id="email-error"></span><br><br>
 
-            <label for="gender">Gender: </label>
+            <label for="gender">Gender: </label><br/>
             <input type="radio" id="male" name="gender" value="Male">
             <label for="html">Male</label>
             <input type="radio" id="female" name="gender" value="Female">
@@ -32,27 +37,28 @@
             <label for="javascript">Other</label>
             <span id="gender-error"></span><br><br><br>
 
+            
+            <input type="date" id="dob" name="dob" min="1990-01-01" max="2005-01-01"><br>
             <label for="dob">Date of birth:</label><br>
-            <input type="date" id="dob" name="dob" min="1990-01-01" max="2005-01-01">
             <span id="dob-error"></span><br><br>
 
-            <label for="age">Age:</label><br>
-            <input type="number" id="age" name="age"><br><br>
+            
+            <input type="number" id="age" name="age"><br>
+            <label for="age">Age:</label><br><br>
 
+            
+            <select id="stream" name="stream" size="1" style="width: 360px;">
+                <option disabled selected value> -- select an option -- </option>
+                <option value="cs">Computer Science</option>
+                <option value="mech">Mechanical</option>
+                <option value="etc">E&TC</option>
+            </select><br/>
             <label for="stream">Stream:</label>
-            <select id="stream" name="stream" size="1">
-            <option disabled selected value> -- select an option -- </option>
-            <option value="cs">Computer Science</option>
-            <option value="mech">Mechanical</option>
-            <option value="etc">E&TC</option>
-            </select>
             <span id="stream-error"></span><br><br>
 
-            <input id="personal-details-submit" type="submit" value="Submit">
+            <input id="personal-details-submit" class="button primary_blue" type="submit" value="Submit">
 
         </form>
-        <br>
-        <a href="marksheet.html">Next</a>
     </div>
 
     <script src="JS/form.js "></script>

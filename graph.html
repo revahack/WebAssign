@@ -10,7 +10,7 @@
         </script>
               <script>
                 function openEmailLink() {
-                  window.open("emailPreview.html");
+                  window.location.replace("./emailPreview.html");
                 }
                 </script>
         <style>
@@ -43,11 +43,17 @@
                 color: white;
             }
         </style>
+
+        
+    <link rel="stylesheet" href="https://fluentdesignforweb.github.io/fluent.css">
+    <link rel="stylesheet" href="./styles/custom.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow&display=swap" rel="stylesheet">
     </head>
     <body>
         <div class="row d-flex justify-content-center">
             <div>
-                <h1 style="text-align: center; padding: 60px ;letter-spacing: 8px; font-size: 30px;">YOUR MARKSHEET</h1>
+                <h1 style="text-align: center; padding: 60px ;letter-spacing: 8px; font-size: 30px;">Prepared Marksheet</h1>
             </div>
             <table id="marks" class="table">
                 <thead class="thead-dark">
@@ -84,7 +90,7 @@
         </script>
         <div class="row d-flex justify-content-center">
             <div>
-                <h1 style="text-align: center; padding: 60px ;letter-spacing: 8px; font-size: 30px;">VISUALIZE YOUR MARKS</h1>
+                <h1 style="text-align: center; padding: 60px ;letter-spacing: 8px; font-size: 30px;">Marks Visualization</h1>
             </div>
             <div class="col-md-6">
                 <canvas id="myChart" style="width:100%;max-width:750px"></canvas>
@@ -130,7 +136,7 @@
             </div>
             <div>
                 <div class="text-center" style="padding: 20px 70px 70px 70px;">
-                    <button type="button" class="btn btn-primary btn-lg btn-block" style="letter-spacing: 3px;" onclick="openEmailLink()">   EMAIL RESULT   </button>
+                    <button type="button" class="primary_blue btn-lg btn-block" style="letter-spacing: 3px;" onclick="openEmailLink()">   Preview Email   </button>
                 </div>          
               </div>
           </div>

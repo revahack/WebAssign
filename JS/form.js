@@ -16,27 +16,35 @@ function checkErrors() {
     if (fname.value.length < 1 || !(!/[^a-zA-Z]/.test(fname.value))) {
         fnameError.textContent = "Please enter a valid Name!";
         fnameError.style.color = 'red';
+        return false;
     }
     if (lname.value.length < 1 || !(!/[^a-zA-Z]/.test(lname.value))) {
         lnameError.textContent = "Please enter a valid Name!";
         lnameError.style.color = 'red';
+        return false;
     }
     if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.value))) {
         emailError.textContent = "Please enter a valid Email address!";
         emailError.style.color = 'red';
+        return false;
     }
     if (gender.value.length < 1) {
         genderError.textContent = "Please select a Gender!";
         genderError.style.color = 'red';
+        return false;
     }
     if (dob.value.length < 1) {
         dobError.textContent = "Please select a Date!";
         dobError.style.color = 'red';
+        return false;
     }
     if (stream.value.length < 1) {
         streamError.textContent = "Please select a Stream!";
         streamError.style.color = 'red';
+        return false;
     }
+
+    return true;
 }
 
 function savePersonalData() {
@@ -47,6 +55,8 @@ function savePersonalData() {
     localStorage.dob = form.elements['dob'].value;
     localStorage.age = form.elements['age'].value;
     localStorage.stream = form.elements['stream'].value;
+
+    return true
 }
 
 let form = document.getElementById('user-form'),
@@ -75,8 +85,9 @@ submit.addEventListener('click', function() {
     genderError.textContent = "";
     dobError.textContent = "";
     streamError.textContent = "";
-    checkErrors();
-    savePersonalData();
+    if(checkErrors() && savePersonalData()){
+        window.location.replace("./marksheet.html");
+    }
     /*console.log(localStorage.fname,
         localStorage.lname,
         localStorage.gender,

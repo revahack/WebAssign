@@ -1,26 +1,89 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link href="./custom.css" rel="stylesheet">
         <title>
-            Email
+            Preview Email
         </title>
+        <style>
+            button:hover{
+                opacity: 0.8;
+            }
+            button:focus{
+                filter: hue-rotate(30deg);
+            }
+        </style>
     </head>
 <body onload="getItems();">
-        <h1>Marksheet</h1>
+    <div style="border-radius: 16px; font-family: 'system-ui'; width: 60%; display: block; margin: 10vh auto; padding: 2vh 3vw; background-color: #fcfcfc; box-shadow: 4px 6px 10px #acacac88, -4px -3px 10px #acacac88;">
 
-        Name: <span id="firstName"></span> <span id="lastName"></span><br>
-        Gender: <span id="gender"></span>
-        Email ID: <span id="emailAdd"></span>
-        dob: <span id="dob"></span>
-        Age: <span id="age"></span>
-        Stream: <span id="stream"></span>
-        OOP MARKS: <span id="oopMarks"></span>
-        OOP MARKS: <span id="sdlcMarks"></span>
-        OOP MARKS: <span id="dbmsMarks"></span>
-        OOP MARKS: <span id="osMarks"></span>
-        OOP MARKS: <span id="cnMarks"></span>
-        <input type="button" value="Send Email" onclick="sendEmail()">
+        <h1 style="text-align: center;;">Generic Result Marksheet Board</h1><br/>
+        <table style="font-size: 1.2em;">
+            <tr>
+                <td style="font-weight: bold; width: 160px;">Name</td><td><span id="firstName"></span> <span id="lastName"></span><br></td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;">Gender</td><td><span id="gender"></span></td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;">Email</td><td><span id="emailAdd"></span></td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;">DOB</td><td><span id="dob"></span></td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;">Age</td><td><span id="age"></span></td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;">Stream</td><td><span id="stream"></span></td>
+            </tr>
+        </table>
 
+        <br/><br/><br/>
+
+        <table id="itemsTable" style="font-size: 1.2em; border-collapse: collapse;">
+            <tr style="background: #0065af; color: #fff;">
+                <th style="padding: 6px 20px; width: 100px; text-align: center;">Serial</th>
+                <th style="padding: 6px 20px; width: 200px; text-align: center;">Subject Name</th>
+                <th style="padding: 6px 20px; width: 200px; text-align: center;">Max Marks</th>
+                <th style="padding: 6px 20px; width: 200px; text-align: center;">Marks Received</th>
+            </tr>
+            <tr style="background: #f4f4f4;">
+                <td style="text-align: center;">1</td>
+                <td style="text-align: center;">OOP</td>
+                <td style="text-align: center;">100</td>
+                <td style="text-align: center;"><span id="oopMarks"></span></td>
+            </tr>   
+            <tr style="background: #ffffff;">
+                <td style="text-align: center;">2</td>
+                <td style="text-align: center;">SDLC</td>
+                <td style="text-align: center;">100</td>
+                <td style="text-align: center;"><span id="sdlcMarks"></span></td>
+            </tr>  
+            <tr style="background: #f4f4f4;">
+                <td style="text-align: center;">3</td>
+                <td style="text-align: center;">DBMS</td>
+                <td style="text-align: center;">100</td>
+                <td style="text-align: center;"><span id="dbmsMarks"></span></td>
+            </tr>  
+            <tr style="background: #ffffff;">
+                <td style="text-align: center;">4</td>
+                <td style="text-align: center;">OS</td>
+                <td style="text-align: center;">100</td>
+                <td style="text-align: center;"><span id="osMarks"></span></td>
+            </tr> 
+            <tr style="background: #f4f4f4;">
+                <td style="text-align: center;">5</td>
+                <td style="text-align: center;">CN</td>
+                <td style="text-align: center;">100</td>
+                <td style="text-align: center;"><span id="cnMarks"></span></td>
+            </tr>   
+        </table><br/><br/>
+        <button onclick="sendEmail()" style="border-radius: 6px; margin: 20px 0; background: #0065af; color: #fcfcfc; border: none; padding: 8px 20px; font-size: 1.3em;">Send Email</button>
+        <br/><br/>
+        <h1 id="success" style="display: none;">Email Sent Succesfully</h1>
+        <h1 id="failure" style="display: none;">Couldn't Send Email</h1>
+    </div>
 </body>
 </html>
 
@@ -61,29 +124,84 @@
 function sendEmail() {
 
     var body = `
-        <h1>Marksheet</h1>
-        Name: ${localStorage.fname} ${localStorage.lname}<br>
-        Gender: <span id="gender1"></span>
-        Email ID: <span id="emailAdd1"></span>
-        dob: <span id="dob1"></span>
-        Age: <span id="age1"></span>
-        Stream: <span id="stream1"></span>
-        OOP MARKS: <span id="oopMarks1"></span>
-        OOP MARKS: <span id="sdlcMarks1"></span>
-        OOP MARKS: <span id="dbmsMarks1"></span>
-        OOP MARKS: <span id="osMarks1"></span>
-        OOP MARKS: <span id="cnMarks1"></span>
+    <div style="border-radius: 16px; font-family: 'system-ui'; width: 60%; display: block; margin: 10vh auto; padding: 2vh 3vw; background-color: #fcfcfc; box-shadow: 4px 6px 10px #acacac88, -4px -3px 10px #acacac88;">
+
+        <h1 style="text-align: center;;">Generic Result Marksheet Board</h1><br/>
+        <table style="font-size: 1.2em;">
+            <tr>
+                <td style="font-weight: bold; width: 160px;">Name</td><td>${localStorage.fname} ${localStorage.lname}</span><br></td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;">Gender</td><td>${localStorage.gender}</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;">Email</td><td>${localStorage.email}</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;">DOB</td><td>${localStorage.dob}</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;">Age</td><td>${localStorage.age}</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;">Stream</td><td>${localStorage.stream}</td>
+            </tr>
+        </table>
+
+        <br/><br/><br/>
+
+        <table id="itemsTable" style="font-size: 1.2em; border-collapse: collapse;">
+            <tr style="background: #0065af; color: #fff;">
+                <th style="padding: 6px 20px; width: 100px; text-align: center;">Serial</th>
+                <th style="padding: 6px 20px; width: 200px; text-align: center;">Subject Name</th>
+                <th style="padding: 6px 20px; width: 200px; text-align: center;">Max Marks</th>
+                <th style="padding: 6px 20px; width: 200px; text-align: center;">Marks Received</th>
+            </tr>
+            <tr style="background: #f4f4f4;">
+                <td style="text-align: center;">1</td>
+                <td style="text-align: center;">OOP</td>
+                <td style="text-align: center;">100</td>
+                <td style="text-align: center;">${localStorage.getItem("OOP")}</td>
+            </tr>   
+            <tr style="background: #ffffff;">
+                <td style="text-align: center;">2</td>
+                <td style="text-align: center;">SDLC</td>
+                <td style="text-align: center;">100</td>
+                <td style="text-align: center;">${localStorage.getItem("SDLC")}</td>
+            </tr>  
+            <tr style="background: #f4f4f4;">
+                <td style="text-align: center;">3</td>
+                <td style="text-align: center;">DBMS</td>
+                <td style="text-align: center;">100</td>
+                <td style="text-align: center;">${localStorage.getItem("DBMS")}</td>
+            </tr>  
+            <tr style="background: #ffffff;">
+                <td style="text-align: center;">4</td>
+                <td style="text-align: center;">OS</td>
+                <td style="text-align: center;">100</td>
+                <td style="text-align: center;">${localStorage.getItem("OS")}</td>
+            </tr> 
+            <tr style="background: #f4f4f4;">
+                <td style="text-align: center;">5</td>
+                <td style="text-align: center;">CN</td>
+                <td style="text-align: center;">100</td>
+                <td style="text-align: center;">${localStorage.getItem("CN")}</td>
+            </tr>   
+        </table>
+    </div>
     `
 Email.send({
     Host : "smtp-mail.outlook.com",
     Username : "shivendra.intern@reva.edu.in",
     Password : "#Elipses12",
-    To : 'shivendrasaurav@gmail.com',
+    To : localStorage.email,
     From : "shivendra.intern@reva.edu.in",
     Subject : "Test email",
     Body : body
 }).then(
-  message => alert(message)
+    message => console.log(message)
+).then(
+    document.getElementById("success").style.display = "block"
 );
 }
 </script>
