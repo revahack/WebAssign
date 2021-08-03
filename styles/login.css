@@ -1,0 +1,53 @@
+body{
+    background-image: url(background.png);
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+.login{
+    width: 360px;
+    padding: 10% 0 0;
+    margin: auto;
+}
+.form{
+    position: relative;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, .2);
+    max-width: 360px;
+    margin: 0 auto 100px;
+    padding: 45px;
+    text-align: center;
+}
+.form h1{
+    color: rgb(143, 143, 142);
+}
+.form input{
+    font-family: 'Georama', sans-serif;
+    outline: 1;
+    background-color: #f2f2f2;
+    width: 200px;
+    border: 0;
+    margin: 0 0 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+.form input:hover{
+    background: white;
+    width: 250px;
+}
+.form input[type="submit"]{
+    font-family: 'Georama', sans-serif;
+    text-transform: uppercase;
+    outline: 1;
+    background: gray;
+    width: 100px;
+    border: 1;
+    padding: 15px;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+}
+.form input[type="submit"]:hover{
+    background: black;
+    width: 140px;
+}

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Application form</title>
+
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+      <script>
+        function openLink() {
+          window.open("graph.html");
+        }
+        </script>
+
+
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  </head>
+
+<body>
+
+
+<section id="cover">
+
+<div class="container">
+<div class="col-lg-8 m-auto mt-5 d-block">
+  <h2 class="text-success text-center">Computer Science Engineering</h2>
+  <p class="text-center font-weight-bold">Fill in the marks for the below subjects</p>
+
+<form action="./graph.html" class="form-inline m-auto d-block bg-light" onsubmit="return validation()" >
+    <div class="mt-5 ms-5 mb-3 row">
+      <label for="oop" class="col-sm-6 col-form-label font-weight-bold"><b>Object Oriented Programming</b></label>
+
+      <div class="col-sm-6">
+      <input type="text" class="mark form-control-plaintext border" id="oop" value="" autocomplete="off">
+      <span id="mark1" class="text-danger font-weight-bold"></span>
+      <span id="p1" class="font-weight-bold"></span>
+      </div>
+
+   </div>
+
+<div class="mt-3 ms-5 mb-3 row">
+<label for="oop" class="col-sm-6 col-form-label"><b>Software Development Lifecycle</b></label>
+<div class="col-sm-6">
+  <input type="text" class="mark form-control-plaintext border" id="sdlc" value="" autocomplete="off">
+  <span id="mark2" class="text-danger font-weight-bold"></span>
+  <span id="p2" class="font-weight-bold"></span>
+</div>
+
+
+</div>
+
+<div class="row mt-3 ms-5 mb-3">
+<label for="dbms" class="col-sm-6 col-form-label"><b>Database Management System</b></label>
+
+<div class="col-sm-6">
+  <input type="text" class="mark form-control-plaintext border" id="dbms" value="" autocomplete="off">
+  <span id="mark3" class="text-danger font-weight-bold"></span>
+  <span id="p3" class="font-weight-bold" ></span>
+</div>
+
+
+
+</div>
+
+<div class="mt-3 ms-5 mb-3 row">
+<label for="os" class="col-sm-6 col-form-label"><b>Operating System</b></label>
+<div class="col-sm-6">
+  <input type="text" class="mark form-control-plaintext border" id="os" value="" autocomplete="off">
+  <span id="mark4" class="text-danger font-weight-bold"></span>
+  <span id="p4" class="font-weight-bold"></span>
+</div>
+
+
+</div>
+
+<div class="mt-3 ms-5 mb-3 row">
+<label for="cn" class="col-sm-6 col-form-label"><b>Computer Networks</b></label>
+<div class="col-sm-6">
+  <input type="text" class="mark form-control-plaintext border" id="cn" value="" autocomplete="off">
+  <span id="mark5" class="text-danger font-weight-bold"></span>
+  <span id="p5" class="font-weight-bold"></span>
+
+</div>
+
+
+</div>
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-sm">
+      <input type="submit" name="submit" value="Validate" class="btn btn-success mt-3 ms-5 mb-3"/>
+    </div>
+    <div class="col-sm">
+      <button class="btn btn-success mt-3 ms-5 mb-3" onclick="openLink()">Next</button>
+    </div>
+  </div>
+</div>
+</form>
+</div>
+</div>
+</section>
+
+
+
+
+<script>
+function validation(){
+  var oop= document.getElementById("oop").value;
+
+  if (isNaN(oop) || oop < 0 || oop > 100) {
+    document.getElementById("mark1").innerHTML="Please fill the required field within the range 0 - 100";
+  }
+
+  if(oop>=50){
+    document.getElementById("p1").innerHTML="The associate has passed the exam";
+    document.getElementById("p1").classList.add("text-success");
+
+  }
+  else if(oop<50){
+    document.getElementById("p1").innerHTML="The associate has failed the exam";
+    document.getElementById("p1").classList.add("text-danger");
+
+  }
+
+  var sdlc=document.getElementById("sdlc").value;
+
+  if (isNaN(sdlc) || sdlc < 0 || sdlc > 100) {
+    document.getElementById("mark2").innerHTML="**Please fill the required field within the range 0 - 100";
+
+  }
+  if(sdlc>=50){
+    document.getElementById("p2").innerHTML="The associate has passed the exam";
+    document.getElementById("p2").classList.add("text-success");
+
+  }
+  else if(sdlc<50){
+    document.getElementById("p2").innerHTML="The associate has failed the exam";
+    document.getElementById("p2").classList.add("text-danger");
+
+  }
+
+  var dbms=document.getElementById("dbms").value;
+  if (isNaN(dbms) || dbms < 1 || dbms > 100) {
+    document.getElementById("mark3").innerHTML="**Please fill the required field within the range 0 - 100";
+
+  }
+  if(dbms>=50){
+    document.getElementById("p3").innerHTML="The associate has passed the exam";
+    document.getElementById("p3").classList.add("text-success");
+
+  }
+  else if(dbms<50){
+    document.getElementById("p3").innerHTML="The associate has failed the exam";
+    document.getElementById("p3").classList.add("text-danger");
+
+  }
+
+
+  var os=document.getElementById("os").value;
+  if (isNaN(os) || os < 0 || os > 100) {
+    document.getElementById("mark4").innerHTML="**Please fill the required field within the range 0 - 100";
+
+  }
+  if(os>=50){
+    document.getElementById("p4").innerHTML="The associate has passed the exam";
+    document.getElementById("p4").classList.add("text-success");
+
+  }
+  else if(os<50){
+    document.getElementById("p4").innerHTML="The associate has failed the exam";
+    document.getElementById("p4").classList.add("text-danger");
+
+  }
+
+
+  var cn=document.getElementById("cn").value;
+  if (isNaN(cn) || cn < 0 || cn > 100) {
+    document.getElementById("mark5").innerHTML="**Please fill the required field within the range 0 - 100";
+
+}
+if(cn>=50){
+  document.getElementById("p5").innerHTML="The associate has passed the exam";
+  document.getElementById("p4").classList.add("text-success");
+
+}
+else if(cn<50){
+  document.getElementById("p5").innerHTML="The associate has failed the exam";
+  document.getElementById("p5").classList.add("text-danger");
+
+}
+localStorage.setItem("OOP",oop);
+localStorage.setItem("SDLC",sdlc);
+localStorage.setItem("DBMS",dbms);
+localStorage.setItem("OS",os);
+localStorage.setItem("CN",cn);
+
+}
+
+</script>
+  </body>
+</html>

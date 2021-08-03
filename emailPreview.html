@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Email
+        </title>
+    </head>
+<body onload="getItems();">
+        <h1>Marksheet</h1>
+
+        Name: <span id="firstName"></span> <span id="lastName"></span><br>
+        Gender: <span id="gender"></span>
+        Email ID: <span id="emailAdd"></span>
+        dob: <span id="dob"></span>
+        Age: <span id="age"></span>
+        Stream: <span id="stream"></span>
+        OOP MARKS: <span id="oopMarks"></span>
+        OOP MARKS: <span id="sdlcMarks"></span>
+        OOP MARKS: <span id="dbmsMarks"></span>
+        OOP MARKS: <span id="osMarks"></span>
+        OOP MARKS: <span id="cnMarks"></span>
+        <input type="button" value="Send Email" onclick="sendEmail()">
+
+</body>
+</html>
+
+<script src="https://smtpjs.com/v3/smtp.js">
+</script>
+
+<script>
+    function getItems(){
+        document.getElementById("oopMarks").innerHTML = localStorage.getItem("OOP");
+        document.getElementById("sdlcMarks").innerHTML = localStorage.getItem("SDLC");
+        document.getElementById("dbmsMarks").innerHTML = localStorage.getItem("DBMS");
+        document.getElementById("osMarks").innerHTML = localStorage.getItem("OS");
+        document.getElementById("cnMarks").innerHTML = localStorage.getItem("CN");
+        document.getElementById("firstName").innerHTML = localStorage.fname;
+        document.getElementById("lastName").innerHTML = localStorage.lname;
+        document.getElementById("gender").innerHTML = localStorage.gender;
+        document.getElementById("emailAdd").innerHTML = localStorage.email;
+        document.getElementById("dob").innerHTML = localStorage.dob;
+        document.getElementById("age").innerHTML = localStorage.age;
+        document.getElementById("stream").innerHTML = localStorage.stream;
+
+        
+        document.getElementById("oopMarks1").innerHTML = localStorage.getItem("OOP");
+        document.getElementById("sdlcMarks1").innerHTML = localStorage.getItem("SDLC");
+        document.getElementById("dbmsMarks1").innerHTML = localStorage.getItem("DBMS");
+        document.getElementById("osMarks1").innerHTML = localStorage.getItem("OS");
+        document.getElementById("cnMarks1").innerHTML = localStorage.getItem("CN");
+        document.getElementById("firstName1").innerHTML = localStorage.fname;
+        document.getElementById("lastName1").innerHTML = localStorage.lname;
+        document.getElementById("gender1").innerHTML = localStorage.gender;
+        document.getElementById("emailAdd1").innerHTML = localStorage.email;
+        document.getElementById("dob1").innerHTML = localStorage.dob;
+        document.getElementById("age1").innerHTML = localStorage.age;
+        document.getElementById("stream1").innerHTML = localStorage.stream;
+    }
+
+
+function sendEmail() {
+
+    var body = `
+        <h1>Marksheet</h1>
+        Name: ${localStorage.fname} ${localStorage.lname}<br>
+        Gender: <span id="gender1"></span>
+        Email ID: <span id="emailAdd1"></span>
+        dob: <span id="dob1"></span>
+        Age: <span id="age1"></span>
+        Stream: <span id="stream1"></span>
+        OOP MARKS: <span id="oopMarks1"></span>
+        OOP MARKS: <span id="sdlcMarks1"></span>
+        OOP MARKS: <span id="dbmsMarks1"></span>
+        OOP MARKS: <span id="osMarks1"></span>
+        OOP MARKS: <span id="cnMarks1"></span>
+    `
+Email.send({
+    Host : "smtp-mail.outlook.com",
+    Username : "shivendra.intern@reva.edu.in",
+    Password : "#Elipses12",
+    To : 'shivendrasaurav@gmail.com',
+    From : "shivendra.intern@reva.edu.in",
+    Subject : "Test email",
+    Body : body
+}).then(
+  message => alert(message)
+);
+}
+</script>

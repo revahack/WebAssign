@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Graph
+        </title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+        </script>
+              <script>
+                function openEmailLink() {
+                  window.open("emailPreview.html");
+                }
+                </script>
+        <style>
+            #marks {
+                font-family: Arial, Helvetica, sans-serif;
+                border-collapse: collapse;
+                width: 90%;
+    
+            }
+    
+            #marks td,
+            #marks th {
+                border: 1px solid #ddd;
+                padding: 8px;
+            }
+    
+            #marks tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+    
+            #marks tr:hover {
+                background-color: #ddd;
+            }
+    
+            #marks th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: left;
+                background-color: #859596;
+                color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="row d-flex justify-content-center">
+            <div>
+                <h1 style="text-align: center; padding: 60px ;letter-spacing: 8px; font-size: 30px;">YOUR MARKSHEET</h1>
+            </div>
+            <table id="marks" class="table">
+                <thead class="thead-dark">
+                    <tr>
+        
+                        <th scope="col">OOP</th>
+                        <th scope="col">SDLC</th>
+                        <th scope="col">DBMS</th>
+                        <th scope="col">OS</th>
+                        <th scope="col">CN</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td id="OOP"></td>
+                        <td id="SDLC"></td>
+                        <td id="DBMS"></td>
+                        <td id="OS"></td>
+                        <td id="CN"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <script>
+            if (typeof (Storage) !== "undefined") {
+                document.getElementById("OOP").textContent = localStorage.getItem("OOP");
+                document.getElementById("SDLC").textContent = localStorage.getItem("SDLC");
+                document.getElementById("DBMS").textContent = localStorage.getItem("DBMS");
+                document.getElementById("OS").textContent = localStorage.getItem("OS");
+                document.getElementById("CN").textContent = localStorage.getItem("CN");
+            } else {
+                alert("Sorry, your browser does not support Web Storage...");
+            }
+        </script>
+        <div class="row d-flex justify-content-center">
+            <div>
+                <h1 style="text-align: center; padding: 60px ;letter-spacing: 8px; font-size: 30px;">VISUALIZE YOUR MARKS</h1>
+            </div>
+            <div class="col-md-6">
+                <canvas id="myChart" style="width:100%;max-width:750px"></canvas>
+
+                <script>
+
+                    var xValues = ["OOP", "SDLC", "DBMS", "OS", "CN"];
+                    var yValues = [parseInt(localStorage.getItem("OOP")),parseInt(localStorage.getItem("SDLC")),parseInt(localStorage.getItem("DBMS")),parseInt(localStorage.getItem("OS")),parseInt(localStorage.getItem("CN"))];
+                    var barColors = ["red", "green","blue","orange","brown"];
+                    
+                    new Chart("myChart", {
+                    type: "bar",
+                    data: {
+                        labels: xValues,
+                        datasets: [{
+                        backgroundColor: barColors,
+                        data: yValues,
+                        barThickness: 60,
+                        }]
+                    },
+                    options: {
+                        legend: {display: false},
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                beginAtZero: true,
+                                min: 0,
+                                max: 100,
+                                stepSize: 20,
+                                }
+                            }]
+                        }
+                    }
+                    });
+                </script>         
+            </div>
+            <div>
+                <script>
+                    sum = parseInt(localStorage.getItem("OOP")) + parseInt(localStorage.getItem("SDLC")) + parseInt(localStorage.getItem("DBMS")) + parseInt(localStorage.getItem("OS")) + parseInt(localStorage.getItem("CN"));
+                    average = sum/5;
+                </script>
+                <h3 style="text-align: center; padding: 50px;" id="average">Your Average is <strong><script>document.write(parseInt(average));</script></strong></h2>
+            </div>
+            <div>
+                <div class="text-center" style="padding: 20px 70px 70px 70px;">
+                    <button type="button" class="btn btn-primary btn-lg btn-block" style="letter-spacing: 3px;" onclick="openEmailLink()">   EMAIL RESULT   </button>
+                </div>          
+              </div>
+          </div>
+
+    </body>
+</html>

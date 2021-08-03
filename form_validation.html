@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Details</title>
+</head>
+
+<body>
+    <div>
+        <form id="user-form" action="./marksheet.html">
+            <label for="fname">First name:</label><br>
+            <input type="text" id="fname" name="fname">
+            <span id="fname-error"></span><br>
+
+            <label for="lname">Last name:</label><br>
+            <input type="text" id="lname" name="lname">
+            <span id="lname-error"></span><br>
+
+            <label for="email">Email id:</label><br>
+            <input type="email" id="email" name="email" placeholder="abc@xyz.com">
+            <span id="email-error"></span><br><br>
+
+            <label for="gender">Gender: </label>
+            <input type="radio" id="male" name="gender" value="Male">
+            <label for="html">Male</label>
+            <input type="radio" id="female" name="gender" value="Female">
+            <label for="css">Female</label>
+            <input type="radio" id="other" name="gender" value="Other">
+            <label for="javascript">Other</label>
+            <span id="gender-error"></span><br><br><br>
+
+            <label for="dob">Date of birth:</label><br>
+            <input type="date" id="dob" name="dob" min="1990-01-01" max="2005-01-01">
+            <span id="dob-error"></span><br><br>
+
+            <label for="age">Age:</label><br>
+            <input type="number" id="age" name="age"><br><br>
+
+            <label for="stream">Stream:</label>
+            <select id="stream" name="stream" size="1">
+            <option disabled selected value> -- select an option -- </option>
+            <option value="cs">Computer Science</option>
+            <option value="mech">Mechanical</option>
+            <option value="etc">E&TC</option>
+            </select>
+            <span id="stream-error"></span><br><br>
+
+            <input id="personal-details-submit" type="submit" value="Submit">
+
+        </form>
+        <br>
+        <a href="marksheet.html">Next</a>
+    </div>
+
+    <script src="JS/form.js "></script>
+</body>
+
+</html>
