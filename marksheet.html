@@ -32,7 +32,7 @@
 <div class="col-lg-12 m-auto mt-5 d-block">
   
 
-<form action="./graph.html" class="form-inline bg-light validForm"" onsubmit="return validation()" >
+<form action="javascript:void(0);" class="form-inline bg-light validForm" id="my-form" onsubmit="return validation();">
   <h2 class="text-center">Computer Science Engineering</h2>
   <p class="text-center font-weight-bold">Fill in the marks for the below subjects</p>
 
@@ -100,6 +100,7 @@
     </div>
   </div>
 </div>
+<button class="primary_blue small" style="display: none; border-radius: 6px; margin-left: 60px; margin-top: 20px;" id="success" onclick="redirectToMarks();">Preview Gradesheet</button>
 </form>
 </div>
 </div>
@@ -109,6 +110,11 @@
 
 
 <script>
+
+document.getElementById('my-form').addEventListener('onsubmit', 
+function(event){event.preventDefault();validation();});
+
+
 function validation(){
   var oop= document.getElementById("oop").value;
 
@@ -193,13 +199,20 @@ else if(cn<50){
   document.getElementById("p5").classList.add("text-danger");
 
 }
+
 localStorage.setItem("OOP",oop);
 localStorage.setItem("SDLC",sdlc);
 localStorage.setItem("DBMS",dbms);
 localStorage.setItem("OS",os);
 localStorage.setItem("CN",cn);
 
-window.location.replace("/graph.html");
+  if(oop >= 0 && oop<=100 && sdlc >= 0 && sdlc <= 100 && dbms >= 0 && dbms <= 100 && os >= 0 && os <= 100 && cn >= 0 && cn <= 100){
+    document.getElementById("success").style.display="block";
+  }
+
+}
+function redirectToMarks(){
+  window.location.replace("./graph.html");
 }
 
 </script>
