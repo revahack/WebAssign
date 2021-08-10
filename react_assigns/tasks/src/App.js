@@ -25,11 +25,11 @@ const App = () => {
   const addStrike = (index, sno) => {
     //check if item is already completed
     if (list[sno].completed) {
-      index.style.textDecoration = 'none';
+      index.classList.remove = 'is-done';
       list[sno].completed = false;
     }
     else{
-      index.style.textDecoration = 'line-through';
+      index.classList.add = 'is-done';
       list[sno].completed = true;
     }
     //count the number of completed items
@@ -50,7 +50,7 @@ const App = () => {
         {total-comp} remaining of {total} tasks.
       </p>
       <ul>
-        {list.map(item => <li key={item.sno} onClick={e=>addStrike(e.target, item.sno)} >{item.todo}</li>)}
+        {list.map(item => <li className={`${item.completed ? "is-done" : ""}`} key={item.sno} onClick={e=>addStrike(e.target, item.sno)} >{item.todo}</li>)}
       </ul>
 
     </div>
