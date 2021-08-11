@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 class employee{
     private String name;
+    private String designation;
     private int age;
     private double salary;
 
@@ -19,10 +20,13 @@ class employee{
         int age = input.nextInt();
         System.out.println("Enter Salary");
         double salary = input.nextDouble();
+        System.out.println("Enter Designation");
+        String designation = input.nextLine();
         //set the object variables
         this.name = name;
         this.age = age;
         this.salary = salary;
+        this.designation = designation;
 
         System.out.println("Employee Created");
     }
@@ -31,6 +35,7 @@ class employee{
         System.out.println("Name: " + this.name);
         System.out.println("Age: " + this.age);
         System.out.println("Salary: " + this.salary);
+        System.out.println("Designation: " + this.designation);
     }
 
     public void raiseSalary(double raise){
@@ -40,7 +45,7 @@ class employee{
 
 };
 
-public class basicAss{
+public class assign{
     public static void main(String[] args){
         Scanner input = new Scanner(System.in);
         employee emp = new employee();
