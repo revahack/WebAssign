@@ -42,10 +42,40 @@ class employee{
 
 public class basicAss{
     public static void main(String[] args){
+        Scanner input = new Scanner(System.in);
         employee emp = new employee();
-        emp.createEmp();
-        emp.display();
-        emp.raiseSalary(10000.00);
-        emp.display();
+        System.out.println("==================================================\nEmployee Manager\n==================================================");
+        //make a flag and run loop while flag is true
+        boolean flag = true;
+        while(flag){
+            //give the option to create an employee, display employee details or quit
+            System.out.println("What do you want to do");
+            System.out.println("1. Create an Employee");
+            System.out.println("2. Display Employee Details");
+            System.out.println("3. Raise Salary");
+            System.out.println("4. Quit");
+            System.out.println("Enter Choice: ");
+            int choice = input.nextInt();
+            switch(choice){
+                case 1:
+                    emp.createEmp();
+                    break;
+                case 2:
+                    emp.display();
+                    break;
+                case 3:
+                    System.out.println("Enter Raise Amount");
+                    double raise = input.nextDouble();
+                    emp.raiseSalary(raise);
+                    break;
+                case 4:
+                    flag = false;
+                    System.out.println("Quiting Now...");
+                    break;
+                default:
+                    System.out.println("Invalid Choice");
+                    break;
+            }
+        }
     }
 };
