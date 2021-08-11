@@ -2,10 +2,10 @@
 import java.util.Scanner;
 
 class employee{
-    private String name;
-    private String designation;
-    private int age;
-    private double salary;
+    String name;
+    int age;
+    double salary;
+    String designation;
 
     public employee(){
     }
@@ -15,13 +15,9 @@ class employee{
         Scanner input = new Scanner(System.in);
         //take input for name, age and salary
         System.out.println("Enter Name");
-        String name = input.nextLine();
+        String name = input.next();
         System.out.println("Enter Age");
         int age = input.nextInt();
-        System.out.println("Enter Salary");
-        double salary = input.nextDouble();
-        System.out.println("Enter Designation");
-        String designation = input.nextLine();
         //set the object variables
         this.name = name;
         this.age = age;
@@ -38,17 +34,57 @@ class employee{
         System.out.println("Designation: " + this.designation);
     }
 
-    public void raiseSalary(double raise){
-        this.salary = this.salary + raise;
+    public void raiseSalary(){
+        this.salary = this.salary + 3000;
         System.out.println("Salary Raised");
     }
 
 };
 
+//make a class clerk which inherits from employee
+class clerk extends employee{
+    //create a new clerk object
+    public clerk(){
+        this.designation = "Clerk";
+        this.salary = 8000;
+    }
+}
+
+//make a class manager which inherits from employee
+class manager extends employee{
+    //create a new manager object
+    public manager(){
+        this.designation = "Manager";
+        this.salary = 12000;
+    }
+    //raise salary of manager
+    public void raiseSalary(){
+        this.salary = this.salary + 5000;
+        System.out.println("Salary Raised");
+    }
+}
+
+//make a class programmer which inherits from employee
+class programmer extends employee{
+    //create a new programmer object
+    public programmer(){
+        this.designation = "Programmer";
+        this.salary = 10000;
+    }
+    //raise salary of programmer
+    public void raiseSalary(){
+        this.salary = this.salary + 5000;
+        System.out.println("Salary Raised");
+    }
+}
+
 public class assign{
     public static void main(String[] args){
         Scanner input = new Scanner(System.in);
         employee emp = new employee();
+        clerk clerk = new clerk();
+        manager manager = new manager();
+        programmer programmer = new programmer();
         System.out.println("==================================================\nEmployee Manager\n==================================================");
         //make a flag and run loop while flag is true
         boolean flag = true;
@@ -63,15 +99,70 @@ public class assign{
             int choice = input.nextInt();
             switch(choice){
                 case 1:
-                    emp.createEmp();
+                    System.out.println("Which type of Employee do you want to add");
+                    System.out.println("1. Clerk");
+                    System.out.println("2. Manager");
+                    System.out.println("3. Programmer");
+                    System.out.println("Enter Choice: ");
+                    int type1 = input.nextInt();
+                    switch(type1){
+                        case 1:
+                            clerk.createEmp();
+                            break;
+                        case 2:
+                            manager.createEmp();
+                            break;
+                        case 3:
+                            programmer.createEmp();
+                            break;
+                        default:
+                            System.out.println("Invalid Choice");
+                            break;
+                    }
                     break;
                 case 2:
-                    emp.display();
+                    System.out.println("Whose details you want to see");
+                    System.out.println("1. Clerk");
+                    System.out.println("2. Manager");
+                    System.out.println("3. Programmer");
+                    System.out.println("Enter Choice: ");
+                    int type2 = input.nextInt();
+                    switch(type2){
+                        case 1:
+                            clerk.display();
+                            break;
+                        case 2:
+                            manager.display();
+                            break;
+                        case 3:
+                            programmer.display();
+                            break;
+                        default:
+                            System.out.println("Invalid Choice");
+                            break;
+                    }
                     break;
                 case 3:
-                    System.out.println("Enter Raise Amount");
-                    double raise = input.nextDouble();
-                    emp.raiseSalary(raise);
+                    System.out.println("Which Employee do you want to give a raise");
+                    System.out.println("1. Clerk");
+                    System.out.println("2. Manager");
+                    System.out.println("3. Programmer");
+                    System.out.println("Enter Choice: ");
+                    int type3 = input.nextInt();
+                    switch(type3){
+                        case 1:
+                            clerk.raiseSalary();
+                            break;
+                        case 2:
+                            manager.raiseSalary();
+                            break;
+                        case 3:
+                            programmer.raiseSalary();
+                            break;
+                        default:
+                            System.out.println("Invalid Choice");
+                            break;
+                    }
                     break;
                 case 4:
                     flag = false;
