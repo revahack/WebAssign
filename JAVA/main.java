@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import package1.package1;
 
 public class main {
     public static void main(String[] args) {
@@ -6,6 +7,7 @@ public class main {
         System.out.println("Enter your name: ");
         String name = sc.nextLine();
         imp.main(name);
+        package1.main(name);
     }
 };
 

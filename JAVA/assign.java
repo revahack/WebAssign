@@ -28,10 +28,15 @@ class employee{
     }
 
     public void display(){
-        System.out.println("Name: " + this.name);
-        System.out.println("Age: " + this.age);
-        System.out.println("Salary: " + this.salary);
-        System.out.println("Designation: " + this.designation);
+        if(this.name != null){
+            System.out.println("Name: " + this.name);
+            System.out.println("Age: " + this.age);
+            System.out.println("Salary: " + this.salary);
+            System.out.println("Designation: " + this.designation);
+        }
+        else{
+            System.out.println("No data entered for " + this.designation);
+        }
     }
 
     public void raiseSalary(){
