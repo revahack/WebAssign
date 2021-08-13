@@ -1,7 +1,7 @@
 //import scanner
 import java.util.Scanner;
 
-class employee{
+abstract class employee{
     String name;
     int age;
     double salary;
@@ -47,7 +47,7 @@ class employee{
 };
 
 //make a class clerk which inherits from employee
-class clerk extends employee{
+final class clerk extends employee{
     //create a new clerk object
     public clerk(){
         this.designation = "Clerk";
@@ -56,7 +56,7 @@ class clerk extends employee{
 }
 
 //make a class manager which inherits from employee
-class manager extends employee{
+final class manager extends employee{
     //create a new manager object
     public manager(){
         this.designation = "Manager";
@@ -70,7 +70,7 @@ class manager extends employee{
 }
 
 //make a class programmer which inherits from employee
-class programmer extends employee{
+final class programmer extends employee{
     //create a new programmer object
     public programmer(){
         this.designation = "Programmer";
