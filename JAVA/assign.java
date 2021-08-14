@@ -1,5 +1,4 @@
-//import scanner
-import java.util.Scanner;
+import java.util.*;
 
 abstract class employee{
     String name;
@@ -10,7 +9,7 @@ abstract class employee{
     public employee(){
     }
 
-    public void createEmp(){
+    public employee createEmp(){
         //create a new scanner object
         Scanner input = new Scanner(System.in);
         //take input for name, age and salary
@@ -21,28 +20,20 @@ abstract class employee{
         //set the object variables
         this.name = name;
         this.age = age;
-        this.salary = salary;
-        this.designation = designation;
 
         System.out.println("Employee Created");
+
+        return this;
     }
 
     public void display(){
-        if(this.name != null){
-            System.out.println("Name: " + this.name);
-            System.out.println("Age: " + this.age);
-            System.out.println("Salary: " + this.salary);
-            System.out.println("Designation: " + this.designation);
-        }
-        else{
-            System.out.println("No data entered for " + this.designation);
-        }
+        System.out.println("Name: " + this.name);
+        System.out.println("Age: " + this.age);
+        System.out.println("Salary: " + this.salary);
+        System.out.println("Designation: " + this.designation);
     }
 
-    public void raiseSalary(){
-        this.salary = this.salary + 3000;
-        System.out.println("Salary Raised");
-    }
+    abstract void raiseSalary();
 
 };
 
@@ -52,6 +43,10 @@ final class clerk extends employee{
     public clerk(){
         this.designation = "Clerk";
         this.salary = 8000;
+    }
+    void raiseSalary(){
+        this.salary = this.salary + 3000;
+        System.out.println("Salary Raised");
     }
 }
 
@@ -83,13 +78,16 @@ final class programmer extends employee{
     }
 }
 
+
 public class assign{
     public static void main(String[] args){
         Scanner input = new Scanner(System.in);
-        employee emp = new employee();
-        clerk clerk = new clerk();
-        manager manager = new manager();
-        programmer programmer = new programmer();
+        // employee emp = new employee();
+        //clerk clerk = new clerk();
+        //manager manager = new manager();
+        //programmer programmer = new programmer();
+        //make a list of employees
+        ArrayList<employee> list = new ArrayList<employee>();
         System.out.println("==================================================\nEmployee Manager\n==================================================");
         //make a flag and run loop while flag is true
         boolean flag = true;
@@ -112,13 +110,64 @@ public class assign{
                     int type1 = input.nextInt();
                     switch(type1){
                         case 1:
-                            clerk.createEmp();
+                            clerk newCl = new clerk();
+                            newCl.createEmp();
+                            //check if object is empty
+                            if(newCl.name == null || newCl.age == 0 || newCl.salary == 0){
+                                System.out.println("Employee not created, invalid details entered");
+                            }else{
+                                //iterate thorough list and check if newCl exsists in list
+                                boolean found = false;
+                                for(employee emp : list){
+                                    if(emp.name.equals(newCl.name)){
+                                        found = true;
+                                        System.out.println("Couldn't add, Employee already exists");
+                                    }
+                                }
+                                if(!found){
+                                    list.add(newCl);
+                                }
+                            }
                             break;
                         case 2:
-                            manager.createEmp();
+                            manager newMan = new manager();
+                            newMan.createEmp();
+                            //check if object is empty
+                            if(newMan.name == null || newMan.age == 0 || newMan.salary == 0){
+                                System.out.println("Employee not created, invalid details entered");
+                            }else{
+                                //iterate thorough list and check if newCl exsists in list
+                                boolean found1 = false;
+                                for(employee emp : list){
+                                    if(emp.name.equals(newMan.name)){
+                                        found1 = true;
+                                        System.out.println("Couldn't add, Employee already exists");
+                                    }
+                                }
+                                if(!found1){
+                                    list.add(newMan);
+                                }
+                            }
                             break;
                         case 3:
-                            programmer.createEmp();
+                            programmer newPro = new programmer();
+                            newPro.createEmp();
+                            //check if object is empty
+                            if(newPro.name == null || newPro.age == 0 || newPro.salary == 0){
+                                System.out.println("Employee not created, invalid details entered");
+                            }else{
+                                //iterate thorough list and check if newCl exsists in list
+                                boolean found2 = false;
+                                for(employee emp : list){
+                                    if(emp.name.equals(newPro.name)){
+                                        found2 = true;
+                                        System.out.println("Couldn't add, Employee already exists");
+                                    }
+                                }
+                                if(!found2){
+                                    list.add(newPro);
+                                }
+                            }
                             break;
                         default:
                             System.out.println("Invalid Choice");
@@ -126,47 +175,44 @@ public class assign{
                     }
                     break;
                 case 2:
-                    System.out.println("Whose details you want to see");
-                    System.out.println("1. Clerk");
-                    System.out.println("2. Manager");
-                    System.out.println("3. Programmer");
-                    System.out.println("Enter Choice: ");
-                    int type2 = input.nextInt();
-                    switch(type2){
-                        case 1:
-                            clerk.display();
-                            break;
-                        case 2:
-                            manager.display();
-                            break;
-                        case 3:
-                            programmer.display();
-                            break;
-                        default:
-                            System.out.println("Invalid Choice");
-                            break;
+                    System.out.println("Enter name of Employee you want to get details of: ");
+                    String type2 = input.next();
+                    //check if string is empty
+                    if(type2.equals("")){
+                        System.out.println("Enter a Valid Name");
+                    }
+                    else{
+                        boolean found = false;
+                        //iterate through list and raise salary of employee where name is equal to type3
+                        for(employee emp : list){
+                            if(emp.name.equals(type2)){
+                                emp.display();
+                                found = true;
+                            }
+                        }
+                        if(!found){
+                            System.out.println("Employee Not Found");
+                        }
                     }
                     break;
                 case 3:
-                    System.out.println("Which Employee do you want to give a raise");
-                    System.out.println("1. Clerk");
-                    System.out.println("2. Manager");
-                    System.out.println("3. Programmer");
-                    System.out.println("Enter Choice: ");
-                    int type3 = input.nextInt();
-                    switch(type3){
-                        case 1:
-                            clerk.raiseSalary();
-                            break;
-                        case 2:
-                            manager.raiseSalary();
-                            break;
-                        case 3:
-                            programmer.raiseSalary();
-                            break;
-                        default:
-                            System.out.println("Invalid Choice");
-                            break;
+                    System.out.println("Enter name of Employee do you want to give a raise: ");
+                    String type3 = input.next();
+                    //check if string is empty
+                    if(type3.equals("")){
+                        System.out.println("Enter a Valid Name");
+                    }
+                    else{
+                        boolean found = false;
+                        //iterate through list and raise salary of employee where name is equal to type3
+                        for(employee emp : list){
+                            if(emp.name.equals(type3)){
+                                emp.raiseSalary();
+                            }
+                        }
+                        if(!found){
+                            System.out.println("Employee Not Found");
+                        }
                     }
                     break;
                 case 4:
