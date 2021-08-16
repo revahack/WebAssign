@@ -1,4 +1,8 @@
+package EclipseTry;
+
 import java.util.*;
+import java.sql.*;
+
 
 abstract class employee{
     String name;
@@ -82,10 +86,6 @@ final class programmer extends employee{
 public class assign{
     public static void main(String[] args){
         Scanner input = new Scanner(System.in);
-        // employee emp = new employee();
-        //clerk clerk = new clerk();
-        //manager manager = new manager();
-        //programmer programmer = new programmer();
         //make a list of employees
         ArrayList<employee> list = new ArrayList<employee>();
         System.out.println("==================================================\nEmployee Manager\n==================================================");
@@ -116,7 +116,7 @@ public class assign{
                             if(newCl.name == null || newCl.age == 0 || newCl.salary == 0){
                                 System.out.println("Employee not created, invalid details entered");
                             }else{
-                                //iterate thorough list and check if newCl exsists in list
+                                //iterate thorough list and check if newCl exists in list
                                 boolean found = false;
                                 for(employee emp : list){
                                     if(emp.name.equals(newCl.name)){
@@ -126,6 +126,22 @@ public class assign{
                                 }
                                 if(!found){
                                     list.add(newCl);
+                                    //insert into database
+                                    try{
+                                        Class.forName("com.mysql.cj.jdbc.Driver");
+                                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/employee","root","admin@123");
+                                        PreparedStatement pstmt = con.prepareStatement("INSERT INTO emp(name,age,salary,designation) VALUES(?,?,?,?)");
+                                        pstmt.setString(1, newCl.name);
+                                        pstmt.setInt(2, newCl.age);
+                                        pstmt.setDouble(3, newCl.salary);
+                                        pstmt.setString(4, newCl.designation);
+                                        pstmt.executeUpdate();
+                                        System.out.println("Employee added");
+                                        pstmt.close();
+                                    }
+                                    catch(Exception e){
+                                        System.out.println(e);
+                                    }
                                 }
                             }
                             break;
@@ -146,6 +162,22 @@ public class assign{
                                 }
                                 if(!found1){
                                     list.add(newMan);
+                                    //insert into database
+                                    try{
+                                        Class.forName("com.mysql.cj.jdbc.Driver");
+                                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/employee","admin","admin@123");
+                                        PreparedStatement pstmt = con.prepareStatement("INSERT INTO emp(name,age,salary,designation) VALUES(?,?,?,?)");
+                                        pstmt.setString(1, newMan.name);
+                                        pstmt.setInt(2, newMan.age);
+                                        pstmt.setDouble(3, newMan.salary);
+                                        pstmt.setString(4, newMan.designation);
+                                        pstmt.executeUpdate();
+                                        System.out.println("Employee added");
+                                        pstmt.close();
+                                    }
+                                    catch(Exception e){
+                                        System.out.println(e);
+                                    }
                                 }
                             }
                             break;
@@ -156,7 +188,7 @@ public class assign{
                             if(newPro.name == null || newPro.age == 0 || newPro.salary == 0){
                                 System.out.println("Employee not created, invalid details entered");
                             }else{
-                                //iterate thorough list and check if newCl exsists in list
+                                //iterate thorough list and check if newCl exists in list
                                 boolean found2 = false;
                                 for(employee emp : list){
                                     if(emp.name.equals(newPro.name)){
@@ -166,6 +198,22 @@ public class assign{
                                 }
                                 if(!found2){
                                     list.add(newPro);
+                                    //insert into database
+                                    try{
+                                        Class.forName("com.mysql.cj.jdbc.Driver");
+                                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/employee","admin","admin@123");
+                                        PreparedStatement pstmt = con.prepareStatement("INSERT INTO emp(name,age,salary,designation) VALUES(?,?,?,?)");
+                                        pstmt.setString(1, newPro.name);
+                                        pstmt.setInt(2, newPro.age);
+                                        pstmt.setDouble(3, newPro.salary);
+                                        pstmt.setString(4, newPro.designation);
+                                        pstmt.executeUpdate();
+                                        System.out.println("Employee added");
+                                        pstmt.close();
+                                    }
+                                    catch(Exception e){
+                                        System.out.println(e);
+                                    }
                                 }
                             }
                             break;
@@ -183,12 +231,26 @@ public class assign{
                     }
                     else{
                         boolean found = false;
-                        //iterate through list and raise salary of employee where name is equal to type3
-                        for(employee emp : list){
-                            if(emp.name.equals(type2)){
-                                emp.display();
-                                found = true;
+                            //select from database
+                            try{
+                                Class.forName("com.mysql.cj.jdbc.Driver");
+                                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/employee","admin","admin@123");
+                                PreparedStatement pstmt = con.prepareStatement("SELECT * FROM emp WHERE name=?");
+                                pstmt.setString(1, type2);
+                                ResultSet rs = pstmt.executeQuery();
+                                while(rs.next()){
+                                    System.out.println("Name: " + rs.getString("name"));
+                                    System.out.println("Age: " + rs.getInt("age"));
+                                    System.out.println("Salary: " + rs.getDouble("salary"));
+                                    System.out.println("Designation: " + rs.getString("designation"));
+                                }
+                                rs.close();
+                                pstmt.close();
                             }
+                            catch(Exception e){
+                                System.out.println(e);
+                            }
+                            found = true;
                         }
                         if(!found){
                             System.out.println("Employee Not Found");
@@ -204,11 +266,20 @@ public class assign{
                     }
                     else{
                         boolean found = false;
-                        //iterate through list and raise salary of employee where name is equal to type3
-                        for(employee emp : list){
-                            if(emp.name.equals(type3)){
-                                emp.raiseSalary();
+                            //raise salary in database
+                            try{
+                                Class.forName("com.mysql.cj.jdbc.Driver");
+                                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/employee","admin","admin@123");
+                                PreparedStatement pstmt = con.prepareStatement("UPDATE emp SET salary=? WHERE name=?");
+                                pstmt.setDouble(1, emp.salary);
+                                pstmt.setString(2, emp.name);
+                                pstmt.executeUpdate();
+                                pstmt.close();
                             }
+                            catch(Exception e){
+                                System.out.println(e);
+                            }
+                            found = true;
                         }
                         if(!found){
                             System.out.println("Employee Not Found");
